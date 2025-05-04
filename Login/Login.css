@@ -166,7 +166,7 @@ form input::placeholder {
   background-color: #d94d4d;
 }
 
-/* Media queries para asegurar el diseño en dispositivos pequeños */
+/* Media queries para asegurar el diseño */
 @media (max-width: 768px) {
   .container {
     width: 70vw;
