@@ -1,0 +1,267 @@
+/* Reset y fuente base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Header fijo y diseño general */
+header {
+  background: linear-gradient(to bottom, #f48ca2, #f8a6ba);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 95px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 100px;
+  object-fit: contain;
+}
+
+/* Menú principal */
+nav ul.main-menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul.main-menu > li {
+  position: relative;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+}
+
+/* Submenús */
+nav ul.submenu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 180px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+}
+
+nav ul.submenu li {
+  border-bottom: 1px solid #eee;
+}
+
+nav ul.submenu li:last-child {
+  border-bottom: none;
+}
+
+nav ul.submenu li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+nav ul.submenu li a:hover {
+  background-color: #fdd8e3;
+  color: #000;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+/* Panel derecho */
+.admin-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 5px 10px;
+}
+
+#user-role {
+  background-color: #fff;
+  color: #f48ca2;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón cerrar sesión */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  color: #f48ca2;
+  font-weight: bold;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover {
+  background-color: #ffe5ec;
+  transform: translateY(-1px);
+}
+
+.logout-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+footer {
+  text-align: center;
+  padding: 5px 0;
+  border-top: 1px solid #ddd;
+  font-family: 'Georgia', serif;
+  background-color: #fdfdfd;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Hero */
+.hero {
+  margin-top: 95px;
+  background-color: #fdd8e3;
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'Georgia', serif;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.hero p {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+/* Tarjetas */
+.cards {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  width: 300px;
+  padding: 20px;
+  border-top: 4px solid #f48ca2;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  border-radius: 6px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  font-family: 'Georgia', serif;
+  background-color: #fdfdfd;
+}
+
+footer h3 {
+  margin: 0;
+}
+
+footer small {
+  color: gray;
+}
+
+/* Botón menú hamburguesa */
+.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    height: auto;
+  }
+
+  .logo {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  nav ul.main-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  nav ul.main-menu.show {
+    display: flex;
+  }
+
+  nav ul.main-menu > li {
+    font-size: 1.2em;
+    padding: 10px 0;
+  }
+
+  .admin-controls {
+    align-items: flex-start;
+    padding: 10px 0;
+    width: 100%;
+  }
+}
