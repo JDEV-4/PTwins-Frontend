@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="Usuario.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Barra superior -->
+    <div class="header-bar">
+      <div class="header-content">
+        <span class="titulo-barra">Gestión de Usuarios</span>
+        <a href="/Home/Home.html" class="btn-salir">
+          <i class="fas fa-home"></i> Inicio
+        </a>
+      </div>
+    </div>
+
+    <div class="usuarios-container">
+      <div class="boton-contenedor">
+        <button id="btnAgregarUsuario">
+          <i class="fas fa-user-plus"></i> Agregar Usuario
+        </button>
+      </div>
+
+      <table class="usuario-tabla">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se carga dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalUsuario" class="modal">
+      <div class="modal-content">
+        <span id="cerrarModal" class="close">&times;</span>
+        <h2 id="tituloModal">Agregar Usuario</h2>
+        <form id="formUsuario">
+          <input type="hidden" id="idUsuario" />
+          <label
+            >Usuario:
+            <input type="text" id="usuario" required />
+          </label>
+          <label
+            >Contraseña:
+            <input type="password" id="clave" required />
+          </label>
+          <label
+            >Rol:
+            <select id="rol">
+              <option value="Administrador">Administrador</option>
+              <option value="Empleado">Empleado</option>
+            </select>
+          </label>
+          <label
+            >Estado:
+            <select id="estado">
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </label>
+          <button type="submit">Guardar</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="Usuario.js"></script>
+  </body>
+</html>

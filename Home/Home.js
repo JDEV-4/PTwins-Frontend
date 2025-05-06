@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   userRoleSpan.textContent = rol;
-
+/*
   const logout = document.querySelector(".logout-btn");
   logout.addEventListener("click", () => {
     const confirmLogout = confirm("¿Estás seguro de que deseas cerrar sesión?");
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.location.href = "/Login/Login.html";
     }
   });
-});
+});*/
 
 async function verificarToken() {
   const token = localStorage.getItem("token");
