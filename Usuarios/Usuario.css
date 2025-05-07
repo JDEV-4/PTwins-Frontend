@@ -107,6 +107,47 @@ body {
   .usuario-tabla th {
     background-color: #f0f0f0;
   }
+
+  /* Estilos para botones de acción dentro de la tabla */
+.btn-accion {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-accion.editar {
+  background-color: #007bff;
+}
+
+.btn-accion.editar:hover {
+  background-color: #0056b3;
+}
+
+.btn-accion.eliminar {
+  background-color: #dc3545;
+}
+
+.btn-accion.eliminar:hover {
+  background-color: #a71d2a;
+}
+
+/* Alternancia y hover para filas de la tabla */
+.usuario-tabla tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.usuario-tabla tr:hover {
+  background-color: #f1f1f1;
+}
+
   
   /* Modal */
   .modal {

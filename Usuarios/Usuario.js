@@ -30,7 +30,7 @@ window.addEventListener("click", (event) => {
 // Cargar usuarios desde el backend
 async function cargarUsuarios() {
   try {
-    const response = await fetch("https://servidor/api/usuario", {
+    const response = await fetch("https://localhost:7012/api/Usuario", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -46,13 +46,16 @@ async function cargarUsuarios() {
       const tr = document.createElement("tr");
 
       tr.innerHTML = `
-        <td>${u.id}</td>
         <td>${u.usuario}</td>
         <td>${u.rol}</td>
         <td>${u.estado}</td>
         <td>
-          <button class="btn-editar" data-id="${u.id}">Editar</button>
-          <button class="btn-eliminar" data-id="${u.id}">Eliminar</button>
+          <button class="btn-accion editar" data-id="${u.id}">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+          <button class="btn-accion eliminar" data-id="${u.id}">
+            <i class="fas fa-trash"></i> Eliminar
+          </button>
         </td>
       `;
 
@@ -69,14 +72,15 @@ formUsuario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const datosUsuario = {
-    Usuario: document.getElementById("usuario").value,
-    Clave: document.getElementById("clave").value,
+    UsuarioName: document.getElementById("usuario").value,
+    UsuarioClave: document.getElementById("clave").value,
     Rol: document.getElementById("rol").value,
     Estado: document.getElementById("estado").value,
   };
+  
 
   try {
-    const response = await fetch("https://servidor/api/usuario", {
+    const response = await fetch("https://localhost:7012/api/Usuario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,15 +89,20 @@ formUsuario.addEventListener("submit", async (e) => {
       body: JSON.stringify(datosUsuario),
     });
 
+    const contentType = response.headers.get("content-type");
+    const data = contentType && contentType.includes("application/json")
+      ? await response.json()
+      : await response.text();
+
     if (!response.ok) {
-      const errorData = await response.json();
-      alert(`Error: ${errorData.message || response.statusText}`);
+      const mensajeError = typeof data === "string" ? data : data.message || response.statusText;
+      alert(`Error: ${mensajeError}`);
       return;
     }
 
-    alert("Usuario agregado exitosamente");
+    alert(data.mensaje || "Usuario guardado exitosamente");
     modalUsuario.style.display = "none";
-    cargarUsuarios(); // Recargar la tabla
+    cargarUsuarios();
   } catch (error) {
     console.error("Error al guardar usuario:", error);
     alert("Hubo un error al guardar el usuario");

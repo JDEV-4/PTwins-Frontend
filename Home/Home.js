@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   userRoleSpan.textContent = rol;
-/*
+
   const logout = document.querySelector(".logout-btn");
   logout.addEventListener("click", () => {
     const confirmLogout = confirm("¿Estás seguro de que deseas cerrar sesión?");
@@ -21,15 +21,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.location.href = "/Login/Login.html";
     }
   });
-});*/
+});
 
 async function verificarToken() {
   const token = localStorage.getItem("token");
   if (!token) return false;
 
   try {
-    const response = await fetch("https://tu-api.com/api/Auth/ValidarToken", {
-      method: "POST",
+    const response = await fetch("https://localhost:7012/api/Auth/validar", {
+      method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`
       }
