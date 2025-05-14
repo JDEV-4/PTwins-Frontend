@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const rol = localStorage.getItem("rol");
   const userRoleSpan = document.getElementById("user-role");
-
+  const rol = localStorage.getItem("rol");
   const tokenValido = await verificarToken();
 
   if (!rol || !tokenValido) {
@@ -10,17 +9,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  // Actualiza el rol del usuario en el header
   userRoleSpan.textContent = rol;
-
- const logout = document.querySelector(".logout-btn");
-  logout.addEventListener("click", () => {
-    const confirmLogout = confirm("¿Estás seguro de que deseas cerrar sesión?");
-    if (confirmLogout) {
-      localStorage.clear();
-      alert("Sesión cerrada.");
-      window.location.href = "/Login/Login.html";
-    }
-  });
 });
 
 async function verificarToken() {
@@ -30,9 +20,7 @@ async function verificarToken() {
   try {
     const response = await fetch("https://localhost:7012/api/Auth/validar", {
       method: "GET",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
+      headers: { Authorization: `Bearer ${token}` },
     });
     return response.ok;
   } catch (error) {
@@ -41,6 +29,6 @@ async function verificarToken() {
   }
 }
 
-function toggleMenu() {
-  document.querySelector(".main-menu").classList.toggle("show");
+function salirDelModulo() {
+  window.location.href = "/Home/Home.html";
 }

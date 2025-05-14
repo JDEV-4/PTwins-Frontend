@@ -1,0 +1,69 @@
+<header>
+  <div class="logo">
+    <img
+      src="/Assets/img/Logo1.png"
+      alt="Logo-Paletitas-Twins"
+      class="logo-img"
+    />
+  </div>
+
+  <nav>
+    <ul class="main-menu">
+      <li class="dropdown">
+        Facturación
+        <ul class="submenu">
+          <li><a href="/Facturacion/Ventas.html">Registrar Venta</a></li>
+          <li><a href="/Facturacion/Devoluciones.html">Devoluciones</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        Inventario
+        <ul class="submenu">
+          <li><a href="/Inventario/Compras.html">Registrar Compra</a></li>
+          <li>
+            <a href="/Inventario/Ajustes.html">Ajustes de Inventario</a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        Catálogos
+        <ul class="submenu">
+          <li><a href="/Clientes/Clientes.html">Clientes</a></li>
+          <li><a href="/Catalogos/Proveedores.html">Proveedores</a></li>
+          <li><a href="/Catalogos/Categorias.html">Categorías</a></li>
+          <li><a href="/Productos/Producto.html">Productos</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        Reportes
+        <ul class="submenu">
+          <li>
+            <a href="/Reportes/ReporteVentas.html">Reporte de Ventas</a>
+          </li>
+          <li>
+            <a href="/Reportes/ReporteCompras.html">Reporte de Compras</a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        Configuración
+        <ul class="submenu">
+          <li><a href="/Usuarios/Usuario.html">Usuarios</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="admin-controls">
+    <span id="user-role">Administrador</span>
+    <button class="logout-btn" onclick="salirDelModulo()">
+      <img
+        src="/Assets/icons/Cerra.png"
+        alt="Cerrar Módulo"
+        class="logout-icon"
+      />
+      Salir del módulo
+    </button>
+  </div>
+</header>
+<script src="header.js"></script>

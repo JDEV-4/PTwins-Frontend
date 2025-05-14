@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Catálogo de Productos</title>
+    <link rel="stylesheet" href="Producto.css" />
+    <link rel="stylesheet" href="/includes/header.css" />
+    <script defer src="Producto.js"></script>
+    <script defer src="/includes/header.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Cabecera dinámica -->
+    <div id="header-container"></div>
+    <script>
+      fetch("/includes/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("header-container").innerHTML = html;
+        })
+        .catch((error) => console.error("Error al cargar la cabecera:", error));
+    </script>
+
+    <!-- Contenido de la pestaña Listar -->
+    <div id="listar" class="tab-content active">
+      <h2>Listado de Productos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Existencia</th>
+            <th>Precio Venta</th>
+            <th>Estado Stock</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body">
+          <!-- Productos cargados dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal para mostrar detalles del producto -->
+    <div id="product-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-details"></div>
+      </div>
+    </div>
+  </body>
+</html>

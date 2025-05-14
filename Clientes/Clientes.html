@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes</title>
+    <link rel="stylesheet" href="Clientes.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Barra superior -->
+    <div class="header-bar">
+      <div class="header-content">
+        <span class="titulo-barra">Clientes</span>
+        <a href="/Home/Home.html" class="btn-salir">
+          <i class="fas fa-home"></i> Inicio
+        </a>
+      </div>
+    </div>
+
+    <div class="clientes-container">
+      <div class="boton-contenedor">
+        <button id="btnRegistrarCliente">
+          <i class="fas fa-user-plus"></i> Registrar Cliente
+        </button>
+      </div>
+
+      <!--Estructura del boton cantidad de registros-->
+      <div class="tabla-controles">
+        <label for="cantidadRegistros">
+          Mostrar
+          <select id="cantidadRegistros">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          Registros
+        </label>
+      </div>
+
+      <table class="clientes-tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se carga dinámicamente -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalClientes" class="modal">
+      <div class="modal-content">
+        <span id="cerrarModal" class="close">&times;</span>
+        <h2 id="tituloModal">Registrar Cliente</h2>
+        <form id="formClientes">
+          <!-- CAMPO OCULTO PARA ID DEL CLIENTE -->
+          <input type="hidden" id="idCliente" />
+
+          <label>
+            Nombre:
+            <input type="text" id="nombre" required />
+          </label>
+          <label>
+            Apellido:
+            <input type="text" id="apellido" required />
+          </label>
+          <label>
+            Teléfono:
+            <input type="text" id="telefono" required />
+          </label>
+
+          <button type="submit">Guardar</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="Clientes.js"></script>
+  </body>
+</html>

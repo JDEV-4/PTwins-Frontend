@@ -1,0 +1,170 @@
+/* === Estilos Generales === */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f3f3;
+    padding-top: 80px;
+    margin: 0;
+}
+
+/* === Pestañas === */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tab-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.tab-button.active {
+    background: #ff3b9d;
+}
+
+.tab-button:hover {
+    background: #ff3b9d;
+}
+
+/* === Tabla === */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+}
+
+th {
+    background-color: #ff69b4;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8e8f0;
+}
+
+tbody tr:hover {
+    background-color: #ffe3e8;
+    cursor: pointer;
+}
+
+/* === Botones === */
+button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.btn-editar { background: #28a745; color: white; }
+.btn-eliminar { background: #dc3545; color: white; }
+
+/* === Modal === */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Ajusta el título a la parte superior izquierda */
+#listar h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    text-align: left; /* Asegura alineación a la izquierda */
+}
+
+/* Ajustar la tabla */
+table {
+    width: 90%;
+    margin: 0 auto 20px auto; /* Ajusta la separación inferior */
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    position: relative;
+    animation: scaleUp 0.3s ease-in-out;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #dc3545;
+}
+
+.close:hover {
+    color: #ff0000;
+}
+
+/* Detalles del modal */
+#modal-details {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    padding-top: 10px;
+}
+
+#modal-details strong {
+    display: block;
+    font-size: 16px;
+    color: #ff69b4;
+    margin-bottom: 4px;
+}

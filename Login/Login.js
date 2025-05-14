@@ -28,7 +28,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }
 
   } catch (error) {
-    console.error('Error en el login:', error); // Mostrará error de red o CORS
+    console.error('Error en el login:', error);
     alert('Hubo un error al intentar iniciar sesión');
   }
 });
