@@ -266,3 +266,58 @@ footer small {
     width: 100%;
   }
 }
+
+.user-menu {
+  position: relative; /* Asegura que el dropdown se posicione con respecto al avatar */
+  display: inline-block;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #f48ca2;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.user-avatar:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.dropdown p {
+  position: absolute;
+  top: 70px; /* Asegura que aparezca justo debajo del avatar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none; /* Oculto por defecto */
+  width: 180px;
+}
+
+.dropdown.hidden {
+  display: none;
+}
+
+.dropdown button {
+  background-color: #f48ca2;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown button:hover {
+  background-color: #ff8c9c;
+  transform: translateY(-2px);
+}

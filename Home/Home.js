@@ -1,46 +1,66 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   const rol = localStorage.getItem("rol");
-  const userRoleSpan = document.getElementById("user-role");
+  const sexo = localStorage.getItem("sexo");
+  const avatar = document.getElementById("user-avatar");
+  const userRoleSpan = document.getElementById("user-role-text");
+  const dropdown = document.getElementById("user-dropdown");
+  const logout = document.getElementById("logout-btn");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainMenu = document.querySelector(".main-menu");
 
-  const tokenValido = await verificarToken();
-
-  if (!rol || !tokenValido) {
-    localStorage.clear();
-    window.location.href = "/Login/Login.html";
+  if (!avatar) {
+    console.error("Elemento avatar no encontrado.");
     return;
   }
+  if (!mainMenu) {
+    console.error("No se encontró la clase '.main-menu'.");
+  }
 
-  userRoleSpan.textContent = rol;
+  const rutaBase = "/Assets/img/";
+  const sexoLower = sexo ? sexo.toLowerCase() : null;
 
- const logout = document.querySelector(".logout-btn");
-  logout.addEventListener("click", () => {
-    const confirmLogout = confirm("¿Estás seguro de que deseas cerrar sesión?");
-    if (confirmLogout) {
-      localStorage.clear();
-      alert("Sesión cerrada.");
-      window.location.href = "/Login/Login.html";
+  if (sexoLower === "hombre" || sexoLower === "h") {
+    avatar.src = `${rutaBase}Hombre.png`;
+  } else if (sexoLower === "mujer" || sexoLower === "m") {
+    avatar.src = `${rutaBase}Mujer.png`;
+  } else {
+    avatar.src = `${rutaBase}default-avatar.png`;
+  }
+
+  if (userRoleSpan && rol) {
+    userRoleSpan.textContent = rol;
+  }
+
+  // Toggle dropdown usuario
+  avatar.addEventListener("click", (e) => {
+    e.stopPropagation(); // evitar que cierre inmediatamente al hacer clic
+    dropdown.classList.toggle("hidden");
+  });
+
+  // Cerrar dropdown al hacer clic fuera
+  document.addEventListener("click", () => {
+    if (!dropdown.classList.contains("hidden")) {
+      dropdown.classList.add("hidden");
     }
   });
-});
 
-async function verificarToken() {
-  const token = localStorage.getItem("token");
-  if (!token) return false;
-
-  try {
-    const response = await fetch("https://localhost:7012/api/Auth/validar", {
-      method: "GET",
-      headers: {
-        "Authorization": `Bearer ${token}`
+  // Cerrar sesión
+  if (logout) {
+    logout.addEventListener("click", () => {
+      if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+        localStorage.clear();
+        alert("Sesión cerrada.");
+        window.location.href = "/Login/Login.html";
       }
     });
-    return response.ok;
-  } catch (error) {
-    console.error("Error al validar token:", error);
-    return false;
+  } else {
+    console.error("Botón de cerrar sesión no encontrado.");
   }
-}
-
-function toggleMenu() {
-  document.querySelector(".main-menu").classList.toggle("show");
-}
+  
+  // Toggle menú hamburguesa (responsive)
+  if (menuToggle && mainMenu) {
+    menuToggle.addEventListener("click", () => {
+      mainMenu.classList.toggle("show");
+    });
+  }
+});

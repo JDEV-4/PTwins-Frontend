@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Paletitas Twins</title>
     <link rel="stylesheet" href="Home.css" />
   </head>
@@ -66,15 +66,19 @@
         </ul>
       </nav>
       <div class="admin-controls">
-        <span id="user-role">Administrador</span>
-        <button class="logout-btn">
+        <div class="user-menu">
           <img
-            src="/Assets/icons/Cerra.png"
-            alt="Cerrar sesión"
-            class="logout-icon"
+            id="user-avatar"
+            class="user-avatar"
+            src=""
+            alt="Avatar usuario"
+            style="cursor: pointer"
           />
-          Cerrar sesión
-        </button>
+          <div class="dropdown hidden" id="user-dropdown">
+            <p id="user-role-text"></p>
+            <button id="logout-btn">Cerrar sesión</button>
+          </div>
+        </div>
       </div>
     </header>
 

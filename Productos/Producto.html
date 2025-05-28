@@ -26,7 +26,30 @@
 
     <!-- Contenido de la pestaña Listar -->
     <div id="listar" class="tab-content active">
-      <h2>Listado de Productos</h2>
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 5%;
+          margin-bottom: 10px;
+        "
+      >
+        <h2>Listado de Productos</h2>
+        <div style="display: flex; gap: 10px">
+          <button id="showInactiveProducts" class="filter-button">
+            Inactivos
+          </button>
+          <button
+            id="addProductButton"
+            class="filter-button"
+            onclick="abrirModalAgregar()"
+          >
+            Agregar
+          </button>
+        </div>
+      </div>
+
       <table>
         <thead>
           <tr>
@@ -42,13 +65,74 @@
           <!-- Productos cargados dinámicamente -->
         </tbody>
       </table>
+
+      <!-- Controles de paginación -->
+      <div id="paginationControls">
+        <button id="prevPage" onclick="goToPage(currentPage - 1)">
+          Anterior
+        </button>
+        <span id="pageNumber">Página 1</span>
+        <button id="nextPage" onclick="goToPage(currentPage + 1)">
+          Siguiente
+        </button>
+      </div>
+    </div>
+    <!-- Modal para agregar producto -->
+    <div id="agregar-producto-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="cerrarModalAgregar()">&times;</span>
+        <h3>Agregar Producto</h3>
+
+        <form id="formAgregarProducto">
+          <label for="nombre">Nombre del Producto:</label>
+          <input type="text" id="nombre" required />
+
+          <label for="nombreCategoria">Categoría:</label>
+          <input type="text" id="nombreCategoria" required />
+
+          <label for="descripcion">Descripción:</label>
+          <input type="text" id="descripcion" required />
+
+          <label for="estado">Estado:</label>
+          <select id="estado">
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+          </select>
+
+          <button type="submit" class="btn-agregar">Agregar Producto</button>
+        </form>
+      </div>
     </div>
 
-    <!-- Modal para mostrar detalles del producto -->
-    <div id="product-modal" class="modal">
+    <!-- Modal para productos inactivos -->
+    <div id="inactive-products-modal" class="modal">
       <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modal-details"></div>
+        <span class="close" onclick="closeInactiveModal()">&times;</span>
+        <h3>Productos Inactivos</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Existencia</th>
+              <th>Precio Venta</th>
+            </tr>
+          </thead>
+          <tbody id="inactive-products-body">
+            <!-- Productos inactivos cargados dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal para detalles del producto -->
+    <div id="detalle-producto-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="cerrarModalProducto()">&times;</span>
+        <h3>Detalles del Producto</h3>
+        <div id="detalle-producto-contenido">
+          <!-- Detalles cargados dinámicamente -->
+        </div>
       </div>
     </div>
   </body>

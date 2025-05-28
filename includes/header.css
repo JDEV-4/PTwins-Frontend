@@ -155,3 +155,64 @@ footer {
   font-size: 1.2em;
   margin-top: 10px;
 }
+
+
+.user-menu {
+  position: relative; /* Asegura que el dropdown se posicione con respecto al avatar */
+  display: inline-block;
+}
+
+.cerrar-modulo-btn {
+  background-color: #fff;
+  color: #f48ca2;
+  font-weight: bold;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cerrar-modulo-btn:hover {
+  background-color: #ffe5ec;
+  transform: translateY(-1px);
+}
+
+
+
+
+.dropdown p {
+  position: absolute;
+  top: 70px; /* Asegura que aparezca justo debajo del avatar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none; /* Oculto por defecto */
+  width: 180px;
+}
+
+.dropdown.hidden {
+  display: none;
+}
+
+.dropdown button {
+  background-color: #f48ca2;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown button:hover {
+  background-color: #ff8c9c;
+  transform: translateY(-2px);
+}

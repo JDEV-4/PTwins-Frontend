@@ -1,34 +1,22 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  const userRoleSpan = document.getElementById("user-role");
-  const rol = localStorage.getItem("rol");
-  const tokenValido = await verificarToken();
-
-  if (!rol || !tokenValido) {
-    localStorage.clear();
-    window.location.href = "/Login/Login.html";
-    return;
-  }
-
-  // Actualiza el rol del usuario en el header
-  userRoleSpan.textContent = rol;
+document.addEventListener("DOMContentLoaded", () => {
+  inicializarEventos();
 });
 
-async function verificarToken() {
-  const token = localStorage.getItem("token");
-  if (!token) return false;
+function inicializarEventos() {
+  const btnCerrarModulo = document.getElementById("btn-cerrar-modulo");
 
-  try {
-    const response = await fetch("https://localhost:7012/api/Auth/validar", {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
+  if (btnCerrarModulo) {
+    btnCerrarModulo.addEventListener("click", () => {
+      // Prompt the user for confirmation
+      if (confirm("¿Deseas cerrar este módulo y regresar al inicio?")) {
+        // Just redirect to the home page; do not remove the header
+        window.location.href = "/Home/Home.html"; // Adjust the path as per your project structure
+      }
     });
-    return response.ok;
-  } catch (error) {
-    console.error("Error al validar token:", error);
-    return false;
+  } else {
+    console.warn("Botón de cerrar módulo no encontrado.");
   }
 }
 
-function salirDelModulo() {
-  window.location.href = "/Home/Home.html";
-}
+// You can remove the cerrarModuloYRedirigirHome function
+// as its functionality is now directly within the event listener.
