@@ -1,0 +1,367 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f3f3f3;
+  padding-top: 80px;
+  margin: 0;
+  color: #333;
+}
+
+/* Barra superior */
+.header-bar {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to right, #ff69b4, #ff85b3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.titulo-barra {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* === Tabla de Categorias === */
+table {
+  width: 90%;
+  margin: 0 auto 30px auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+th {
+  background-color: #ff69b4;
+  color: white;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fcebf2;
+}
+
+tbody tr:hover {
+  background-color: #ffe3e8;
+  cursor: pointer;
+}
+
+
+/* === Paginación === */
+#paginationControls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+#paginationControls button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  position: relative;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+#paginationControls button:disabled {
+  background-color: #ff69b4;
+  cursor: not-allowed;
+  color: #ddd;
+}
+
+#paginationControls button:disabled:hover::after {
+  content: "\25CF"; /* Círculo negro */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  animation: pulse 1.5s infinite;
+}
+
+
+/* Estilo para el botón Agregar categorias */
+#addProveedorButton {
+  padding: 10px 20px;
+  background-color: #28a745;       /* Color principal */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
+
+/* Hover del botón */
+#addProveedorButton:hover {
+  background-color: #218838;
+}
+
+/* Estilo para el botón Mostrar Inactivos / Activos */
+#btnMostrarInactivos {
+  padding: 10px 20px;
+  background-color: #28a745;       /* Mismo color que el botón Agregar */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
+
+#btnMostrarInactivos:hover {
+  background-color: #218838;
+}
+
+
+/* Contenedor para los botones */
+td > button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+/* Encabezados */
+th {
+  background-color: #ff69b4;
+  color: white;
+  font-weight: bold;
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Celdas */
+td {
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Filas alternas */
+tbody tr:nth-child(even) {
+  background-color: #fcebf2;
+}
+
+/* Hover sobre filas */
+tbody tr:hover {
+  background-color: #ffe3e8;
+  cursor: pointer;
+}
+
+
+.btn-accion.desactivar {
+  background-color: #d6366e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+.btn-accion.desactivar:hover {
+  background-color: #b62a5a;
+}
+
+.btn-accion.activar {
+  background-color: #d6366e; /* rosa fuerte */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-accion.activar:hover {
+  background-color: #b62a5a; /* rosa más oscuro al pasar el mouse */
+}
+
+.btn-accion.actualizar {
+  background-color: #3b82f6; /* azul vivo */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.btn-accion.actualizar:hover {
+  background-color: #2563eb; /* azul más oscuro */
+}
+
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex; /* Esto centra vertical y horizontal */
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+  margin: 0;
+}
+
+
+
+/* Botón de cerrar en esquina superior derecha */
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #d6336c;
+  cursor: pointer;
+}
+
+/* Estilo del formulario */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.modal-content label {
+  font-weight: 600;
+  color: #333;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Botón Guardar */
+.modal-content button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content .btn-cancel {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content .btn-cancel:hover {
+  background-color: #c82333;
+}

@@ -1,0 +1,181 @@
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  background-color: #fff;
+  padding: 37px;
+  padding-bottom: 50px;
+  border-radius: 15px;
+  max-width: 1100px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid #f48ca2;
+  margin-top: 83px;
+  margin-bottom: 60px;
+  min-height: 400px;
+}
+
+.container h1 {
+  margin-top: -20px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #f48ca2;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #f48ca2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #f8a6ba;
+  transform: translateY(-2px);
+}
+
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Fecha */
+.fecha-label {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #f48ca2;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.95em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Estilo limpio para tabla tipo imagen */
+#tablaCompra {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: white;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Encabezado rosado, letras blancas, redondeado arriba */
+#tablaCompra thead {
+  background-color: #f48ca2;
+  color: white;
+}
+
+#tablaCompra thead th {
+  padding: 12px 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Redondear solo las esquinas superiores del thead */
+#tablaCompra thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+#tablaCompra thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* Cuerpo blanco y sin bordes */
+#tablaCompra tbody td {
+  padding: 12px 10px;
+  text-align: center;
+  color: #444;
+  border: none;
+}
+
+/* Hover muy suave */
+#tablaCompra tbody tr:hover {
+  background-color: #fff0f5;
+  transition: background-color 0.2s ease;
+}
+
+
+/* Botón eliminar */
+#tablaCompra button.eliminar {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#tablaCompra button.eliminar:hover {
+  background-color: #e63946;
+  transform: scale(1.05);
+}
+
+/* Ancho fijo por columna */
+#tablaCompra th:nth-child(1),
+#tablaCompra td:nth-child(1) { width: 20%; }
+
+#tablaCompra th:nth-child(2),
+#tablaCompra td:nth-child(2) { width: 10%; }
+
+#tablaCompra th:nth-child(3),
+#tablaCompra td:nth-child(3) { width: 15%; }
+
+#tablaCompra th:nth-child(4),
+#tablaCompra td:nth-child(4) { width: 15%; }
+
+#tablaCompra th:nth-child(5),
+#tablaCompra td:nth-child(5) { width: 15%; }
+
+#tablaCompra th:nth-child(6),
+#tablaCompra td:nth-child(6) { width: 15%; }
+
+#tablaCompra th:nth-child(7),
+#tablaCompra td:nth-child(7) { width: 10%; }

@@ -5,32 +5,40 @@ body {
   padding-top: 80px;
   margin: 0;
 }
-
-/* === Tabla === */
+/* === Estilo General para Tablas === */
 table {
   width: 90%;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 30px auto;
   border-collapse: collapse;
-  background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-th,
-td {
-  padding: 14px;
-  text-align: left;
-}
-
+/* Encabezados */
 th {
   background-color: #ff69b4;
   color: white;
+  font-weight: bold;
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
 }
 
+/* Celdas */
+td {
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Filas alternas */
 tbody tr:nth-child(even) {
-  background-color: #f8e8f0;
+  background-color: #fcebf2;
 }
 
+/* Hover sobre filas */
 tbody tr:hover {
   background-color: #ffe3e8;
   cursor: pointer;
@@ -39,19 +47,25 @@ tbody tr:hover {
 
 /* === Botones === */
 button {
-  padding: 8px 12px;
-  font-size: 14px;
-  border: none;
-  border-radius: 6px;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
+  background-color: #d6336c;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
 }
 
-button:hover {
-  opacity: 0.8;
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-/* Botón de cerrar */
+button:hover:not(:disabled) {
+  background-color: #ff3b9d;
+}
+
 .close {
   position: absolute;
   top: 10px;
@@ -65,22 +79,17 @@ button:hover {
   color: #ff0000;
 }
 
-
-/* Botón Desactivar */
+/* === Botón Desactivar === */
 .btn-desactivar {
-  background: #dc3545; /* Rojo */
+  background: #dc3545;
   color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
 .btn-desactivar:hover {
   background: #c82333;
 }
 
-
-/* Botón para ver detalles (ícono ojo) */
+/* === Botón Ver Detalles === */
 .btn-ver {
   background: #007bff;
   color: white;
@@ -90,15 +99,11 @@ button:hover {
   font-size: 14px;
 }
 
-.btn-ver i {
-  pointer-events: none;
-}
-
 .btn-ver:hover {
   background: #0056b3;
 }
 
-/* === Modal === */
+/* === Modal Común === */
 .modal {
   display: none;
   position: fixed;
@@ -114,6 +119,7 @@ button:hover {
   animation: fadeIn 0.3s ease-in-out;
 }
 
+/* === Contenido Común del Modal === */
 .modal-content {
   background: #fff;
   padding: 25px;
@@ -121,11 +127,11 @@ button:hover {
   max-width: 450px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  text-align: left;
   position: relative;
   animation: scaleUp 0.3s ease-in-out;
 }
 
+/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -146,21 +152,50 @@ button:hover {
   }
 }
 
-/* Botón de cerrar */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 22px;
-  cursor: pointer;
-  color: #dc3545;
+/* === Diseño Mejorado del Formulario de Agregar Producto === */
+#formAgregarProducto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-.close:hover {
-  color: #ff0000;
+#formAgregarProducto label {
+  font-weight: bold;
+  color: #555;
 }
 
-/* Detalles del modal */
+#formAgregarProducto input,
+#formAgregarProducto select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+#formAgregarProducto input:focus,
+#formAgregarProducto select:focus {
+  outline: none;
+  border-color: #ff69b4;
+  box-shadow: 0 0 4px #ffb6d1;
+}
+
+.btn-agregar {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.btn-agregar:hover {
+  background-color: #218838;
+}
+
+/* === Modal Detalles === */
 #modal-details {
   font-size: 14px;
   line-height: 1.5;
@@ -175,24 +210,23 @@ button:hover {
   margin-bottom: 4px;
 }
 
-/* Botones de filtro */
-.filter-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
+/* === Botones de Filtro === */
 .filter-button {
   padding: 10px 15px;
   font-size: 16px;
-  background: #ff69b4;
+  background: #28a745;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
   display: inline-flex;
   align-items: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+  background: #1e7e34 !important;
 }
 
 #addProductButton {
@@ -200,25 +234,17 @@ button:hover {
   top: 15px;
 }
 
-
-
-.filter-button:hover {
-  background: #ff3b9d;
+#showInactiveProducts {
+  position: relative;
+  top: 15px;
 }
-
-div[style*="display: flex; justify-content: flex-start"] {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+#addCategoryButton {
+  position: relative;
+  top: 15px;
 }
 
 
-
-.filter-button:hover {
-  background: #ff3b9d;
-}
-
-/* Estilos para la paginación */
+/* === Paginación === */
 #paginationControls {
   display: flex;
   justify-content: center;
@@ -226,33 +252,157 @@ div[style*="display: flex; justify-content: flex-start"] {
   margin-top: 20px;
 }
 
-#showInactiveProducts {
-    position: relative;
-    top: 15px;
+/* Modal actualizar producto - reutiliza clases generales modal y modal-content */
+#modalActualizarProducto {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  z-index: 2500; /* encima del modal general */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-#nextPage:disabled {
-    opacity: 0.5; 
-    cursor: not-allowed;
-    background-color: #ccc;
+/* Contenido modal actualizar */
+#modalActualizarProducto .modal-content {
+  background: #fff;
+  padding: 30px 25px;
+  width: 90%;
+  max-width: 480px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(214, 51, 108, 0.4);
+  position: relative;
+  animation: scaleUp 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
+/* Título */
+#modalActualizarProducto h3 {
+  color: #d6336c;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+}
 
-button {
-  padding: 8px 15px;
-  font-size: 16px;
-  border-radius: 5px;
+/* Formulario dentro del modal */
+#formActualizarProducto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#formActualizarProducto label {
+  font-weight: 600;
+  color: #444;
+}
+
+#formActualizarProducto input,
+#formActualizarProducto select {
+  padding: 12px 14px;
+  border: 1.5px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#formActualizarProducto input:focus,
+#formActualizarProducto select:focus {
+  outline: none;
+  border-color: #d6336c;
+  box-shadow: 0 0 8px #ffb6d1;
+}
+
+/* Botón actualizar */
+#modalActualizarProducto .btn-actualizar {
+  margin-top: 25px;
+  width: 100%;
+  padding: 16px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  background-color: #d6336c;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
-  background-color: #ff69b4;
+  transition: background-color 0.3s ease;
+}
+
+#modalActualizarProducto .btn-actualizar:hover {
+  background-color: #b52b5b;
+}
+
+/* Botón cerrar (X) */
+#modalActualizarProducto .close {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #d6336c;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#modalActualizarProducto .close:hover {
+  color: #b52b5b;
+}
+
+
+#modal-gestion-categorias table th:first-child,
+#modal-gestion-categorias table td:first-child {
+  display: none;
+}
+
+.panel-categorias {
+  background-color: #fff6f9;
+  border: 2px solid #f48ca2;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.btn-categoria-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2px 5% 8px 0; /* 👈 margen superior reducido y algo de separación a la derecha */
+}
+
+
+.btn-categoria-container button {
+  padding: 10px 20px;
+  background-color: #28a745;
   color: white;
   border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.btn-categoria-container button:hover {
+  background-color: #218838;
 }
 
-button:hover:not(:disabled) {
-  background-color: #ff3b9d;
+.panel-categorias h3 {
+  margin-bottom: 25px; /* o incluso 6px si querés más compacto */
+}
+
+.panel-categorias table {
+  margin-top: 2px; /* o menos */
+}
+
+.col-id {
+  display: none;
 }

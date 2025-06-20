@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Compras</title>
+    <link rel="stylesheet" href="Compra.css" />
+    <link rel="stylesheet" href="/Includes/header.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <div class="container">
+      <h1>Registrar Compra</h1>
+      <label id="fecha-label" class="fecha-label"></label>
+
+      <!-- Datos generales -->
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="proveedor">Proveedor:</label>
+          <input
+            type="text"
+            id="proveedor"
+            placeholder="Seleccione el proveedor"
+          />
+        </div>
+        <div class="form-group">
+          <label for="factura">Número de factura:</label>
+          <input type="text" id="factura" placeholder="Número de factura" />
+        </div>
+      </div>
+
+      <!-- Producto y precios -->
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="producto">Producto:</label>
+          <input
+            type="text"
+            id="producto"
+            placeholder="Seleccione el producto"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad:</label>
+          <input type="number" id="cantidad" placeholder="Cantidad" min="1" />
+        </div>
+        <div class="form-group">
+          <label for="precioCompra">Precio de compra:</label>
+          <input
+            type="number"
+            id="precioCompra"
+            placeholder="Precio de compra"
+            min="0"
+            step="0.01"
+          />
+        </div>
+        <div class="form-group">
+          <label for="precioVenta">Precio de venta:</label>
+          <input
+            type="number"
+            id="precioVenta"
+            placeholder="Precio de venta"
+            min="0"
+            step="0.01"
+          />
+        </div>
+      </div>
+
+      <!-- Lote y vencimiento -->
+      <div class="form-grid" style="margin-bottom: 25px">
+        <div class="form-group">
+          <label for="lote">Lote:</label>
+          <input type="text" id="lote" placeholder="Lote" />
+        </div>
+        <div class="form-group">
+          <label for="vencimiento">Fecha de vencimiento:</label>
+          <input type="date" id="vencimiento" />
+        </div>
+        <div class="form-group" style="display: flex; align-items: end">
+          <button
+            id="btnAgregar"
+            style="cursor: pointer; padding: 6px 12px; font-size: 1rem"
+          >
+            Agregar
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabla con scroll -->
+      <div
+        style="
+          max-height: 220px;
+          overflow-y: auto;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        "
+      >
+        <table id="tablaCompra">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio de compra</th>
+              <th>Precio de venta</th>
+              <th>Lote</th>
+              <th>Fecha de vencimiento</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <!-- Botón para registrar -->
+      <div class="button-group">
+        <button id="btnRegistrarCompra">Registrar Compra</button>
+      </div>
+    </div>
+
+    <script src="/Includes/header.js"></script>
+    <script>
+      fetch("/Includes/header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        });
+
+      const fechaActual = new Date().toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+      document.getElementById(
+        "fecha-label"
+      ).textContent = `Fecha: ${fechaActual}`;
+    </script>
+    <script src="Compras.js"></script>
+  </body>
+</html>

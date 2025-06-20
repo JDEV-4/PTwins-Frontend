@@ -1,16 +1,16 @@
 /* General */
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  padding-top: 70px;
-  background-color: #fef5f9;
+  font-family: Arial, sans-serif;
+  padding-top: 70px; /* Para la barra fija */
+  background-color: #f9f9f9;
 }
 
 /* Barra superior */
 .header-bar {
   width: 100%;
   height: 60px;
-  background: linear-gradient(to right, #ff69b4, #ff85b3);
+  background: linear-gradient(to right, #ff69b4, #ff85b3); /* Igual que clientes */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   position: fixed;
   top: 0;
@@ -36,6 +36,7 @@ body {
   font-weight: bold;
 }
 
+/* Botón salir */
 .btn-salir {
   color: white;
   text-decoration: none;
@@ -45,182 +46,447 @@ body {
   font-size: 14px;
   font-weight: bold;
   transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-salir i {
+  margin-right: 6px;
 }
 
 .btn-salir:hover {
   background-color: #c02570;
 }
 
-/* Contenedor principal */
+/* Contenedor principal usuarios con estilo igual a clientes */
 .usuarios-container {
   max-width: 1000px;
-  margin: 20px auto;
+  margin: 70px auto; /* Igual que clientes */
   padding: 20px;
   background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Botón agregar */
 .boton-contenedor {
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Igual que clientes */
 }
 
 .boton-contenedor button {
-  padding: 10px 25px;
-  background: linear-gradient(to right, #28a745, #218838);
+  padding: 10px 20px;
+  background-color: #28a745;
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 8px;
   font-size: 14px;
-  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* Puedes usar margin-right en i si prefieres */
 }
 
 .boton-contenedor button:hover {
-  background: linear-gradient(to right, #218838, #1e7e34);
+  background-color: #218838;
 }
 
-/* Tabla */
-.usuario-tabla {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 10px;
+/* Controles tabla (filtros, etc) */
+.tabla-controles {
+  margin: 20px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
 }
 
-.usuario-tabla th {
-  background-color: #ffe4ec;
-  color: #333;
-  padding: 12px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  text-align: center;
-  font-weight: 600;
+.tabla-controles select {
+  margin: 0 5px; /* Igual que clientes */
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
 }
 
-.usuario-tabla td {
-  background-color: #fff;
-  padding: 12px;
+.tabla-controles select:focus {
+  outline: none;
+  border-color: #ff69b4;
+}
+
+/* === Estilo Unificado para Todas las Tablas === */
+table {
+  width: 90%;
+  max-width: 1000px; /* limit ancho máximo en pantallas grandes */
+  margin: 0 auto 30px auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
-.usuario-tabla tr:hover td {
-  background-color: #fff0f5;
-  transition: 0.3s ease;
+/* Encabezados */
+th {
+  background-color: #ff69b4;
+  color: white;
+  font-weight: bold;
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Celdas */
+td {
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Filas alternas */
+tbody tr:nth-child(even) {
+  background-color: #fcebf2;
+}
+
+/* Hover sobre filas */
+tbody tr:hover {
+  background-color: #ffe3e8;
+  cursor: pointer;
+}
+
+
+.boton-contenedor {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 12px; /* espacio entre botón y tabla */
+  text-align: right;
+  margin-top: 30px;
+}
+.boton-contenedor button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover en filas tabla usuarios con transición y fondo en cada celda */
+.usuario-tabla tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.usuario-tabla tbody tr:hover td {
+  background-color: #fff0f5; /* rosa suave claro */
+  cursor: pointer;
+}
+
+/* Cabecera tabla */
+.usuario-tabla thead th {
+  background-color: #ff69b4;  /* rosa chicha más fuerte */
+  color: white;               /* texto blanco para contraste */
+  font-weight: 600;
+  border-bottom: 2px solid #ff3385; /* borde un poco más oscuro */
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* Celdas tabla */
+.usuario-tabla tbody td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 /* Botones dentro de tabla */
 .btn-accion {
-  padding: 8px 14px;
+  padding: 6px 12px;
   border: none;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: bold;
+  border-radius: 6px;
+  font-size: 14px;
   color: white;
   cursor: pointer;
-  margin: 0 4px;
-  transition: all 0.3s ease;
+  margin-right: 5px;
+  transition: background-color 0.3s;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
 .btn-accion.editar {
-  background: linear-gradient(to right, #66b3ff, #3399ff);
+  background-color: #007bff;
 }
 
 .btn-accion.editar:hover {
-  background: linear-gradient(to right, #3399ff, #007bff);
-}
-
-.btn-accion.eliminar {
-  background: linear-gradient(to right, #ff6666, #ff4d4d);
-}
-
-.btn-accion.eliminar:hover {
-  background: linear-gradient(to right, #ff4d4d, #cc0000);
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1500;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 80px auto;
-  padding: 20px;
-  border: 1px solid #eee;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: fadeInUp 0.4s ease;
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.modal-content h2 {
-  margin-top: 0;
-  font-weight: 600;
-}
-
-.modal-content label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.modal-content input,
-.modal-content select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 4px;
-  margin-bottom: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
-}
-
-.modal-content button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.modal-content button:hover {
   background-color: #0056b3;
 }
 
-.close {
-  float: right;
-  font-size: 24px;
+.btn-accion.eliminar {
+  background-color: #dc3545;
+}
+
+.btn-accion.eliminar:hover {
+  background-color: #a71d2a;
+}
+
+/* Estado del usuario */
+.estado-activo {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.estado-inactivo {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Paginación */
+.paginacion-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #ffe0f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.paginacion-contenedor button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  background-color: #ff69b4;
+  color: white;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
+
+.paginacion-contenedor button:hover {
+  background-color: #ff85b3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.paginacion-contenedor button:disabled {
+  background-color: #ffc0cb;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.paginacion-contenedor span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d63384;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal: fondo semi-transparente y oculto por defecto */
+.modal {
+  display: none; /* oculto al inicio */
+  position: fixed;
+  z-index: 1500;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Modal contenido: cuadro blanco centrado */
+.modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botón cerrar */
+.close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #ff69b4;
+}
+
+
+/* Contenido del modal */
+.modal-content {/* rosa muy claro para el fondo */
+  padding: 30px 40px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Botón Guardar del modal */
+#formUsuario button[type="submit"] {
+  background-color: #e75480; /* rosa fuerte */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px; /* más espacio para texto */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%; /* ocupa todo el ancho del form */
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(231, 84, 128, 0.4);
+}
+
+#formUsuario button[type="submit"]:hover {
+  background-color: #d0416e; /* rosa oscuro */
+  box-shadow: 0 6px 12px rgba(208, 65, 110, 0.6);
+}
+
+/* Labels */
+#formUsuario label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/* Inputs y selects */
+#formUsuario input[type="text"],
+#formUsuario input[type="password"],
+#formUsuario select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1.5px solid #f8c6d0; /* borde rosado claro */
+  box-sizing: border-box;
+  font-size: 15px;
+  background-color: #fff0f6; /* fondo muy suave */
+}
+
+#formUsuario input[type="text"]:focus,
+#formUsuario input[type="password"]:focus,
+#formUsuario select:focus {
+  border-color: #e75480; /* borde rosa fuerte al enfocar */
+  outline: none;
+  background-color: #ffe6f0; /* fondo rosado claro al enfocar */
+}
+
+#paginationControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+
+  /* Quitamos fondo, borde redondeado y sombra */
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+
+  /* Opcional: quitar padding si ya no se necesita */
+  padding: 0;
+
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#paginationControls button {
+  padding: 10px 20px;
+  background-color: #d63384;  /* Verde */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: normal;
+}
+
+#paginationControls button:hover:not(:disabled) {
+  background-color: #ff85b3;  /* Verde más oscuro al pasar el mouse */
+}
+
+#paginationControls button:disabled {
+  background-color: #ffc0cb;  /* Verde claro para disabled */
+  cursor: not-allowed;
+}
+
+#pageNumber {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+}
+
+.btn-accion.desactivar {
+  background-color: #d6366e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+.btn-accion.desactivar:hover {
+  background-color: #b62a5a;
+}
+
+.btn-accion.activar {
+  background-color: #d6366e; /* rosa fuerte */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-accion.activar:hover {
+  background-color: #b62a5a; /* rosa más oscuro al pasar el mouse */
+}
+

@@ -1,0 +1,761 @@
+/* Estilo general */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #fdd8e3, #fff);
+  padding: 20px;
+  margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+  position: relative; /* ← Esto permite que los elementos absolutos se ubiquen dentro */
+  background-color: #fff;
+  padding: 37px;
+  border-radius: 15px;
+  max-width: 1100px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid #f48ca2;
+  margin-top: 83px;
+}
+
+/* Encabezado */
+thead {
+  background-color: #f48ca2;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+thead th {
+  padding: 14px 10px;
+  font-size: 1em;
+  position: sticky;
+  top: 0;
+  background-color: #f48ca2;
+  z-index: 1;
+}
+
+/* Cuerpo de la tabla */
+tbody {
+  display: block;
+  height: 200px; /* Altura fija visible de la tabla */
+  overflow-y: auto;
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+tbody tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+  background-color: #ffe5ec;
+}
+
+/* Celdas */
+td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #f8a6ba;
+  font-size: 0.95em;
+  color: #444;
+}
+
+/* Alternar color de fondo en filas pares */
+tbody tr:nth-child(even) {
+  background-color: #fff0f5;
+}
+
+/* Subtotal con negrita */
+td:nth-child(4) {
+  font-weight: bold;
+  color: #f06292;
+}
+
+/* Botón de eliminar */
+button.eliminar {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.eliminar i {
+  margin-right: 4px;
+}
+
+button.eliminar:hover {
+  background-color: #e63946;
+  transform: scale(1.05);
+}
+
+
+
+/* Título principal */
+h1 {
+  text-align: center;
+  color: #f48ca2;
+  margin-top: 12px;     /* ↓ antes podría estar más alto, por defecto suele ser 20px+ */
+  margin-bottom: 5px;
+}
+
+/* Grid para organizar campos responsivos */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+
+/* Agrupación de campos de formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2px;
+  padding-right: 0; /* quita si hay padding */
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #f48ca2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 0; /* o negativo para empujar */
+}
+
+
+button:hover {
+  background-color: #f8a6ba;
+  transform: translateY(-2px);
+}
+
+
+
+/* Tabla de productos */
+table {
+  width: 95%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+th {
+  background-color: #f48ca2;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+td {
+
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffe5ec;
+}
+
+/* Botón Eliminar */
+button.eliminar {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button.eliminar:hover {
+  background-color: #e63946;
+}
+
+/* Total */
+.total {
+  text-align: right;
+  font-size: 1.2em;
+  color: #f48ca2;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.input-corto {
+  max-width: 250px;
+}
+
+/* Fecha en esquina superior derecha */
+.fecha-label {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #f48ca2;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.95em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+
+tbody {
+  min-height: 200px; /* o la altura que quieras */
+  display: block;
+  overflow-y: auto;
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Contenedor de la lista emergente */
+.lista-clientes {
+  position: absolute; /* para que se superponga dentro del .container relativo */
+  top: 100%; /* justo abajo del input */
+  left: 0;
+  right: 0;
+  max-height: 180px; /* limita altura y activa scroll */
+  overflow-y: auto;
+  background: #fff;
+  border: 1.5px solid #f48ca2;
+  border-top: none; /* para que no se vea doble borde con el input */
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 15px rgba(244, 140, 162, 0.3);
+  z-index: 1000;
+  font-size: 0.95em;
+}
+
+/* Cada item dentro de la lista */
+.cliente-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #555;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover en items */
+.cliente-item:hover {
+  background-color: #fdd8e3; /* color suave rosado claro */
+  color: #f48ca2;
+}
+
+/* Mensaje cuando no hay resultados */
+.lista-clientes p {
+  padding: 10px 15px;
+  color: #999;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Contenedor autocompletado productos */
+.lista-productos {
+  position: absolute; /* se superpone dentro del contenedor relativo */
+  top: 100%; /* justo debajo del input */
+  left: 0;
+  right: 0;
+  max-height: 200px; /* límite de altura con scroll */
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1.5px solid #f48ca2;
+  border-top: none; /* para no duplicar borde con el input */
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 15px rgba(244, 140, 162, 0.3);
+  z-index: 1000;
+  font-size: 0.95em;
+}
+
+/* Cada elemento dentro del autocompletado */
+.producto-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #555;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-bottom: 1px solid #f48ca2;
+}
+
+/* Último item sin borde */
+.producto-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover / selección visual */
+.producto-item:hover, .producto-item.active {
+  background-color: #fdd8e3; /* rosado suave */
+  color: #f48ca2;
+  font-weight: bold;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.close-button {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-buttons button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 45%;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #45a049;
+}
+
+.modal-buttons #btnSoloVenta {
+  background-color: #2196F3;
+}
+
+.modal-buttons #btnSoloVenta:hover {
+  background-color: #0b7dda;
+}
+
+.modal-mensaje {
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-mensaje {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+
+.cerrar:hover {
+  color: #444;
+}
+
+.input-lupa-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-lupa {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Modal básico */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 20px;
+  width: 400px;
+  border-radius: 8px;
+}
+
+.cerrar {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.lista-scroll {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.item-cliente {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.item-cliente:hover {
+  background-color: #f0f0f0;
+}
+
+/* Contenedor de totales */
+.totales-container {
+  position: fixed;
+  bottom: 10px; /* Espacio para no chocar con el botón flotante */
+  right: 140px;   /* Ajustado más cerca del borde derecho */
+  z-index: 999;
+  display: inline-block; /* Se adapta al tamaño del contenido */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Caja de totales */
+.totales-box {
+  background-color: transparent;
+  padding: 5px 10px; /* Más compacto */
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  font-size: 0.85em; /* Tamaño más pequeño */
+  line-height: 1.4;
+  margin: 0;
+  pointer-events: none; /* Opcional: evita que el usuario lo toque/seleccione */
+  max-width: 250px; /* Limita el ancho si hay mucho texto */
+}
+
+/* Texto general de totales */
+.totales-box p {
+  margin: 6px 0;
+  font-size: 1em;
+  color: #444;
+  font-weight: bold;
+}
+
+/* Texto del total final resaltado */
+.totales-box p.total-final {
+  font-size: 1.3em;
+  color: #d6366e;
+  text-align: center;
+  border-top: 2px solid #f48ca2;
+  margin-top: 4px !important;
+  padding-top: 4px !important;
+}
+
+/* Contenedor de totales */
+.totales-container {
+  position: fixed;
+  bottom: 24px; /*este valor sube la caja */
+  right: 140px; /* Mantiene la posición a la derecha */
+  z-index: 999;
+  display: inline-block; /* Se adapta al tamaño del contenido */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+button.registrar:hover {
+  background-color: #f8a6ba;
+  transform: translateY(-3px);
+}
+
+
+.lista-autocompletado {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.cliente-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.cliente-item:hover {
+  background-color: #f0f0f0;
+}
+
+.input-cantidad-con-icono {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* espacio entre input e icono */
+  max-width: 150px; /*para controlar tamaño */
+}
+
+.input-cantidad-con-icono input {
+  flex-grow: 1;
+  padding-right: 8px;
+}
+
+.input-cantidad-con-icono i {
+  color: #f48ca2; /* mismo color rosa */
+  font-size: 1.2em;
+  cursor: default;
+  user-select: none;
+}
+
+/* Contenedor de la tabla */
+#tablaVenta {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Encabezado fijo */
+#tablaVenta thead {
+  background-color: #f48ca2;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Cuerpo con scroll */
+#tablaVenta tbody {
+  display: block;
+  max-height: 250px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+/* Filas del cuerpo */
+#tablaVenta tbody tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Celdas SIN bordes feos */
+#tablaVenta td, #tablaVenta th {
+  padding: 12px 10px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #f8a6ba; /* solo línea horizontal */
+}
+
+/* Contenedor de búsqueda por número de factura */
+.busqueda-factura {
+  display: flex;
+  flex-direction: column; /*esto Coloca los elementos en columna */
+  align-items: flex-start; /* esto Alinea a la izquierda */
+  gap: 5px; /* Espacio entre el label y el input */
+  margin-bottom: 20px;
+}
+
+#numeroFactura {
+  padding: 8px 12px;
+  border: 1.5px solid #f48ca2;
+  border-radius: 8px;
+  font-size: 1em;
+  width: 160px; /* Ancho del input */
+  transition: border-color 0.3s ease;
+}
+
+#numeroFactura:focus {
+  border-color: #f06292;
+  outline: none;
+  box-shadow: 0 0 5px rgba(244, 140, 162, 0.4);
+}
+
+/* Botón de buscar factura */
+#btnBuscarFactura {
+  background-color: #f48ca2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btnBuscarFactura:hover {
+  background-color: #f8a6ba;
+  transform: translateY(-2px);
+}
+
+/* Ajuste para colocar el botón al lado del input */
+.busqueda-factura-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#btnBuscarFactura i {
+  font-size: 1.5em; /* Aumenta el tamaño del ícono específicamente */
+  line-height: 1;
+}
+
+/* Para alinear otros campos en la misma fila */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+
+/* Botón de buscar factura */
+#btnBuscarFactura {
+  background-color: #f48ca2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btnBuscarFactura:hover {
+  background-color: #f8a6ba;
+  transform: translateY(-2px);
+}
+
+/* Limitar ancho de inputs de Precio y Cantidad */
+.form-group:nth-child(3), /* Precio Unitario */
+.form-group:nth-child(4)  /* Cantidad */
+{
+  max-width: 150px; /* ancho fijo/moderado */
+  flex: 1 1 150px;  /* para que no se estiren demasiado */
+}
+
+/* Para inputs dentro de esos grupos */
+.form-group:nth-child(3) input,
+.form-group:nth-child(4) input {
+  width: 100%; /* que rellenen su contenedor */
+}
+
+/* Ajustar ancho de cliente y producto para que no se reduzcan demasiado */
+.form-group:nth-child(1),
+.form-group:nth-child(2) {
+  flex: 2 1 300px; /* más espacio para estos inputs */
+}
+
+/* Botón Agregar alineado y con tamaño adecuado */
+.form-group:nth-child(4) button#btnAgregar {
+  padding: 6px 12px;
+  font-size: 1rem;
+  /* ya lo tienes inline, pero puedes controlar margen si quieres */
+  margin-left: 8px;
+}
+
+/* Forzar ancho fijo para input de Precio Unitario */
+#precio {
+  width: 110px !important;  /* ancho fijo */
+  min-width: 120px;
+  max-width: 120px;
+}
+
+
+/* Opcional: para que los inputs no se vean muy grandes en pantallas pequeñas */
+@media (max-width: 700px) {
+  .form-grid {
+    flex-direction: column;
+  }
+  .form-group {
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+  .form-group:nth-child(4) {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  #btnAgregar {
+    margin-left: 0;
+  }
+}

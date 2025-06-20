@@ -1,0 +1,325 @@
+/* === Estilos Generales === */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f3f3f3;
+  padding-top: 80px;
+  margin: 0;
+  color: #333;
+}
+
+/* === Tabla de Proveedores === */
+table {
+  width: 90%;
+  margin: 0 auto 30px auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+th {
+  background-color: #ff69b4;
+  color: white;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fcebf2;
+}
+
+tbody tr:hover {
+  background-color: #ffe3e8;
+  cursor: pointer;
+}
+
+/* === Botones Generales === */
+button {
+  padding: 10px 18px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+  user-select: none;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #ff3b9d;
+}
+
+/* === Botón Eliminar o Desactivar === */
+.btn-desactivar {
+  background-color: #dc3545;
+}
+
+.btn-desactivar:hover {
+  background-color: #c82333;
+}
+
+/* === Modal General Mejorado === */
+.modal {
+  display: none; /* Por defecto oculto */
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px 35px;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  position: relative;
+  animation: scaleUp 0.3s ease-in-out;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Botón cerrar del modal */
+.modal-content .close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.modal-content .close:hover {
+  color: #ff69b4;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* === Formulario Agregar Proveedor Mejorado === */
+#formAgregarProveedor,
+#formProveedor {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+#formAgregarProveedor label,
+#formProveedor label {
+  font-weight: 600;
+  color: #444;
+  user-select: none;
+}
+
+#formAgregarProveedor input,
+#formAgregarProveedor select,
+#formProveedor input,
+#formProveedor select {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+#formAgregarProveedor input:focus,
+#formAgregarProveedor select:focus,
+#formProveedor input:focus,
+#formProveedor select:focus {
+  outline: none;
+  border-color: #ff69b4;
+  box-shadow: 0 0 8px #ffb6d1;
+}
+
+/* Botón Agregar Proveedor */
+.btn-agregar {
+  background-color: #28a745;
+  font-weight: 700;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border: none;
+  color: white;
+  user-select: none;
+}
+
+.btn-agregar:hover {
+  background-color: #218838;
+}
+
+/* === Modal Detalles Proveedor === */
+#modal-details {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  user-select: text;
+}
+
+#modal-details strong {
+  display: block;
+  font-size: 17px;
+  color: #ff69b4;
+  margin-bottom: 6px;
+}
+
+/* === Botones de Filtro === */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filter-button {
+  padding: 10px 18px;
+  font-size: 15px;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s ease;
+  user-select: none;
+}
+
+.filter-button:hover {
+  background: #ff3b9d;
+}
+
+/* Posicionamiento de Botones */
+#addProveedorButton,
+#showInactiveProveedores {
+  margin-top: 10px;
+}
+
+/* === Paginación === */
+#paginationControls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+#paginationControls button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  position: relative;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+#paginationControls button:disabled {
+  background-color: #ff69b4;
+  cursor: not-allowed;
+  color: #ddd;
+}
+
+#paginationControls button:disabled:hover::after {
+  content: "\25CF"; /* Círculo negro */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  animation: pulse 1.5s infinite;
+}
+
+/* Animación de pulso para el círculo */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  table, .modal-content {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Estilo para el botón Agregar Proveedor */
+#addProveedorButton {
+  padding: 10px 20px;
+  background-color: #28a745;       /* Color principal */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;                 /* 👈 Le da un pequeño espacio sin mover el h2 ni la tabla */
+}
+
+/* Hover del botón */
+#addProveedorButton:hover {
+  background-color: #218838;
+}

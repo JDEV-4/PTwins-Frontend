@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Power BI - Paletitas Twins</title>
+    <link rel="stylesheet" href="Reporte.css" />
+    <script defer src="/includes/header.js"></script>
+  </head>
+  <body>
+    <!-- Cabecera dinámica -->
+    <div id="header-container"></div>
+    <script>
+      fetch("/includes/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("header-container").innerHTML = html;
+        })
+        .catch((error) => console.error("Error al cargar la cabecera:", error));
+    </script>
+
+    <main>
+      <iframe
+        title="Reporte_Proyecto"
+        width="600"
+        height="373.5"
+        src="https://app.powerbi.com/view?r=eyJrIjoiZjcxN2IxZDUtYTEyZi00MzkxLThkNmEtYjIxMWIxYjUzNDQyIiwidCI6ImU0NzY0NmZlLWRhMjctNDUxOC04NDM2LTVmOGIxNThiYTEyNyIsImMiOjR9"
+        frameborder="0"
+        allowfullscreen="true"
+      ></iframe>
+    </main>
+  </body>
+</html>

@@ -20,11 +20,11 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
       localStorage.setItem("usuario", data.usuario);
       localStorage.setItem("rol", data.rol);
 
-      // **Guardamos el sexo también, asumiendo que viene en data.sexo**
+      // **Guardamos el sexo
       if(data.sexo) {
         localStorage.setItem("sexo", data.sexo);
       } else {
-        // Por si acaso no viene, puedes poner un valor por defecto o alertar
+        // Por si acaso colcamos un valor por defecto o alertar
         console.warn("No se recibió el sexo del usuario en la respuesta.");
       }
 

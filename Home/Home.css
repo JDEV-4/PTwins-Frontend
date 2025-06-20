@@ -11,12 +11,12 @@ body {
   color: #000;
 }
 
-/* Header fijo y diseño general */
 header {
-  background: linear-gradient(to bottom, #f48ca2, #f8a6ba);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(to bottom, #f48ca2, #f8a6ba);
   padding: 0 30px;
   height: 95px;
   position: fixed;
@@ -51,6 +51,7 @@ nav ul.main-menu > li {
   font-size: 1.1em;
   font-weight: bold;
   color: white;
+  padding: 8px;
 }
 
 /* Submenús */
@@ -137,16 +138,6 @@ nav ul.submenu li a:hover {
   object-fit: contain;
 }
 
-footer {
-  text-align: center;
-  padding: 5px 0;
-  border-top: 1px solid #ddd;
-  font-family: 'Georgia', serif;
-  background-color: #fdfdfd;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 /* Hero */
 .hero {
   margin-top: 95px;
@@ -177,7 +168,8 @@ footer {
 }
 
 .card {
-  width: 300px;
+  width: 90%;
+  max-width: 300px;
   padding: 20px;
   border-top: 4px solid #f48ca2;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
@@ -202,6 +194,8 @@ footer {
   border-top: 1px solid #ddd;
   font-family: 'Georgia', serif;
   background-color: #fdfdfd;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 footer h3 {
@@ -212,63 +206,9 @@ footer small {
   color: gray;
 }
 
-/* Botón menú hamburguesa */
-.menu-toggle {
-  display: none;
-  font-size: 1.8em;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    height: auto;
-  }
-
-  .logo {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .menu-toggle {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-
-  nav ul.main-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-    gap: 10px;
-  }
-
-  nav ul.main-menu.show {
-    display: flex;
-  }
-
-  nav ul.main-menu > li {
-    font-size: 1.2em;
-    padding: 10px 0;
-  }
-
-  .admin-controls {
-    align-items: flex-start;
-    padding: 10px 0;
-    width: 100%;
-  }
-}
-
+/* Avatar usuario */
 .user-menu {
-  position: relative; /* Asegura que el dropdown se posicione con respecto al avatar */
+  position: relative;
   display: inline-block;
 }
 
@@ -285,18 +225,16 @@ footer small {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
-
 .dropdown p {
   position: absolute;
-  top: 70px; /* Asegura que aparezca justo debajo del avatar */
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  display: none; /* Oculto por defecto */
+  display: none;
   width: 180px;
 }
 
@@ -320,4 +258,52 @@ footer small {
 .dropdown button:hover {
   background-color: #ff8c9c;
   transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .logo-img {
+    max-height: 80px;
+    width: auto;
+  }
+
+  nav ul.main-menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  nav ul.main-menu > li {
+    padding: 8px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .admin-controls {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .hero {
+    padding: 30px 10px;
+  }
 }

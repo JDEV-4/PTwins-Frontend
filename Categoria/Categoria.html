@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listado de Categorías</title>
+    <link rel="stylesheet" href="Categoria.css" />
+    <script defer src="/includes/header.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Cabecera dinámica -->
+    <div id="header-container"></div>
+    <script>
+      fetch("/includes/header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("header-container").innerHTML = html;
+          const script = document.createElement("script");
+          script.src = "/includes/header.js";
+          document.body.appendChild(script);
+        })
+        .catch((error) => console.error("Error al cargar la cabecera:", error));
+    </script>
+
+    <div id="listar" class="tab-content active">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 5%;
+          margin-bottom: 10px;
+        "
+      >
+        <h2>Listado de Categorías</h2>
+        <div style="display: flex; gap: 10px">
+          <button
+            id="addProveedorButton"
+            class="filter-button"
+            onclick="abrirModalAgregar()"
+          >
+            Agregar Categoría
+          </button>
+          <button id="btnMostrarInactivos" class="filter-button">
+            Mostrar Inactivos
+          </button>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="categoria-table-body">
+          <!-- Productos cargados dinámicamente -->
+        </tbody>
+      </table>
+
+      <!-- Modal para agregar categoría -->
+      <div id="modalAgregarCategoria" class="modal" style="display: none">
+        <div class="modal-content">
+          <span class="close" onclick="cerrarModalAgregar()">&times;</span>
+          <h3>Agregar Categoría</h3>
+          <form id="formAgregarCategoria">
+            <label for="nombreCategoria">Nombre:</label>
+            <input type="text" id="nombreCategoria" name="nombre" required />
+
+            <label for="descripcionCategoria">Descripción:</label>
+            <textarea id="descripcionCategoria" name="descripcion"></textarea>
+
+            <label for="estadoCategoria">Estado:</label>
+            <select id="estadoCategoria" name="estado">
+              <option value="true">Activo</option>
+              <option value="false">Inactivo</option>
+            </select>
+
+            <button type="submit" class="btn-accion">Guardar</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal para actualizar categoría -->
+      <div id="modalActualizarCategoria" class="modal" style="display: none">
+        <div class="modal-content">
+          <span class="close" onclick="cerrarModalActualizar()">&times;</span>
+          <h3>Actualizar Categoría</h3>
+          <form id="formActualizarCategoria">
+            <input type="hidden" id="categoriaIdActualizar" name="id" />
+
+            <label for="nombreCategoriaActualizar">Nombre:</label>
+            <input
+              type="text"
+              id="nombreCategoriaActualizar"
+              name="nombre"
+              required
+            />
+
+            <label for="descripcionCategoriaActualizar">Descripción:</label>
+            <textarea
+              id="descripcionCategoriaActualizar"
+              name="descripcion"
+            ></textarea>
+
+            <button type="submit" class="btn-accion actualizar">
+              <i class="fas fa-save"></i> Guardar Cambios
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div id="paginationControls">
+        <button id="prevPage" onclick="goToPage(currentPage - 1)">
+          Anterior
+        </button>
+        <span id="pageNumber">Página 1</span>
+        <button id="nextPage" onclick="goToPage(currentPage + 1)">
+          Siguiente
+        </button>
+      </div>
+    </div>
+
+    <script src="Categoria.js" defer></script>
+  </body>
+</html>

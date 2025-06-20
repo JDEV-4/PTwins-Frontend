@@ -2,12 +2,12 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    padding-top: 70px; /* Para la barra fija */
+    padding-top: 70px; 
     background-color: #f9f9f9;
-  }
-  
-  /* Barra superior */
-  .header-bar {
+}
+
+/* Barra superior */
+.header-bar {
     width: 100%;
     height: 60px;
     background: linear-gradient(to right, #ff69b4, #ff85b3);
@@ -19,9 +19,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .header-content {
+}
+
+.header-content {
     width: 100%;
     max-width: 1000px;
     padding: 0 20px;
@@ -29,14 +29,14 @@ body {
     justify-content: space-between;
     align-items: center;
     color: white;
-  }
-  
-  .titulo-barra {
+}
+
+.titulo-barra {
     font-size: 20px;
     font-weight: bold;
-  }
-  
-  .btn-salir {
+}
+
+.btn-salir {
     color: white;
     text-decoration: none;
     background-color: #d63384;
@@ -45,33 +45,32 @@ body {
     font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s;
-  }
-  
-  .btn-salir i {
+}
+
+.btn-salir i {
     margin-right: 6px;
-  }
-  
-  .btn-salir:hover {
+}
+
+.btn-salir:hover {
     background-color: #c02570;
-  }
-  
-  /* Contenido principal */
-  .clientes-container {
+}
+
+.clientes-container {
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 70px auto;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Botón */
-  .boton-contenedor {
+}
+
+/* Botón */
+.boton-contenedor {
     text-align: right;
     margin-bottom: 10px;
-  }
-  
-  .boton-contenedor button {
+}
+
+.boton-contenedor button {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
@@ -80,93 +79,129 @@ body {
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .boton-contenedor button i {
+}
+
+.boton-contenedor button i {
     margin-right: 6px;
-  }
-  
-  .boton-contenedor button:hover {
+}
+
+.boton-contenedor button:hover {
     background-color: #218838;
-  }
-  
-  /*Tabla de registros*/
-  .tabla-controles {
+}
+
+/* Controles */
+.tabla-controles {
     margin: 20px 0 10px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     font-size: 14px;
-  }
-  
-  .tabla-controles select {
+}
+
+.tabla-controles select {
     margin: 0 5px;
     padding: 5px;
     font-size: 14px;
-  }
+}
 
-
-  /* Tabla */
-  .clientes-tabla {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  .clientes-tabla th,
-  .clientes-tabla td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .clientes-tabla th {
-    background-color: #f0f0f0;
-  }
-
-  /* Estilos para botones de acción dentro de la tabla */
+/* Estilos de botones de acción */
 .btn-accion {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  color: white;
-  cursor: pointer;
-  margin-right: 5px;
-  transition: background-color 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .btn-accion.editar {
-  background-color: #007bff;
+    background-color: #007bff;
 }
 
 .btn-accion.editar:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .btn-accion.eliminar {
-  background-color: #dc3545;
+    background-color: #dc3545;
 }
 
 .btn-accion.eliminar:hover {
-  background-color: #a71d2a;
+    background-color: #a71d2a;
 }
 
-/* Alternancia y hover para filas de la tabla */
-.clientes-tabla tr:nth-child(even) {
-  background-color: #f9f9f9;
+/* Estado del cliente */
+.estado-activo {
+    color: #28a745;
+    font-weight: bold;
 }
 
-.clientes-tabla tr:hover {
-  background-color: #f1f1f1;
+.estado-inactivo {
+    color: #dc3545;
+    font-weight: bold;
 }
 
-  
-  /* Modal */
-  .modal {
+/* Contenedor de paginación */
+.paginacion-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffe0f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.paginacion-contenedor button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ff69b4;
+    color: white;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#paginationControls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.paginacion-contenedor button:hover {
+    background-color: #ff85b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.paginacion-contenedor button:disabled {
+    background-color: #ffc0cb;
+    cursor: not-allowed;
+}
+
+.paginacion-contenedor span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d63384;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal */
+.modal {
     display: none;
     position: fixed;
     z-index: 1500;
@@ -176,9 +211,9 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: #fff;
     margin: 80px auto;
     padding: 20px;
@@ -187,44 +222,207 @@ body {
     max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .modal-content h2 {
+}
+
+.modal-content h2 {
     margin-top: 0;
-  }
-  
-  .modal-content label {
+}
+
+.modal-content label {
     display: block;
     margin-bottom: 10px;
-  }
-  
-  .modal-content input,
-  .modal-content select {
+}
+
+.modal-content input,
+.modal-content select {
     width: 100%;
     padding: 8px;
     margin-top: 4px;
     margin-bottom: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
-  }
-  
-  .modal-content button {
+}
+
+.modal-content button {
     background-color: #007bff;
     color: white;
     padding: 10px 18px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-  }
-  
-  .modal-content button:hover {
+}
+
+.modal-content button:hover {
     background-color: #0056b3;
-  }
-  
-  .close {
+}
+
+.close {
     float: right;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-  }
-  
+}
+
+button {
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #ff3b9d;
+}
+/* === Estilo Unificado para Tablas === */
+table {
+  width: 80%;
+  margin: 0 auto 30px auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Encabezados */
+th {
+  background-color: #ff69b4;
+  color: white;
+  font-weight: bold;
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Celdas */
+td {
+  padding: 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Filas alternas */
+tbody tr:nth-child(even) {
+  background-color: #fcebf2;
+}
+
+/* Hover sobre filas */
+tbody tr:hover {
+  background-color: #ffe3e8;
+  cursor: pointer;
+}
+.btn-accion.desactivar {
+  background-color: #d6366e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+.btn-accion.desactivar:hover {
+  background-color: #b62a5a;
+}
+
+.btn-accion.activar {
+  background-color: #d6366e; /* rosa fuerte */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-accion.activar:hover {
+  background-color: #b62a5a;
+}
+
+.btn-accion.actualizar {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.btn-accion.actualizar:hover {
+  background-color: #2563eb; /* azul más oscuro (Tailwind blue-600) */
+}
+
+
+.boton-contenedor {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 12px; /* espacio entre botón y tabla */
+  text-align: right;
+  margin-top: 30px;
+}
+.boton-contenedor button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+/* Botón agregar */
+.boton-contenedor {
+  text-align: right;
+  margin-bottom: 10px; /* Igual que clientes */
+}
+
+.boton-contenedor button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.boton-contenedor button:hover {
+  background-color: #218838;
+}
+
+

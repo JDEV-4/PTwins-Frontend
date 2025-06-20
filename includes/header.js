@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   inicializarEventos();
+  establecerAvatar();
 });
 
 function inicializarEventos() {
@@ -7,10 +8,8 @@ function inicializarEventos() {
 
   if (btnCerrarModulo) {
     btnCerrarModulo.addEventListener("click", () => {
-      // Prompt the user for confirmation
       if (confirm("¿Deseas cerrar este módulo y regresar al inicio?")) {
-        // Just redirect to the home page; do not remove the header
-        window.location.href = "/Home/Home.html"; // Adjust the path as per your project structure
+        window.location.href = "/Home/Home.html";
       }
     });
   } else {
@@ -18,5 +17,40 @@ function inicializarEventos() {
   }
 }
 
-// You can remove the cerrarModuloYRedirigirHome function
-// as its functionality is now directly within the event listener.
+function establecerAvatar() {
+  let avatar = document.getElementById("user-avatar");
+
+  if (!avatar) {
+    console.warn("Esperando a que el avatar esté disponible...");
+    const checkInterval = setInterval(() => {
+      avatar = document.getElementById("user-avatar");
+      if (avatar) {
+        clearInterval(checkInterval);
+        asignarAvatar(avatar);
+      }
+    }, 100); 
+    return;
+  }
+
+  asignarAvatar(avatar);
+}
+
+function asignarAvatar(avatar) {
+  const userRoleSpan = document.getElementById("user-role-text");
+  const rutaBase = "/Assets/img/";
+  const sexo = localStorage.getItem("sexo") || "default";
+
+  const sexoLower = sexo.toLowerCase();
+  avatar.src =
+    sexoLower === "hombre" || sexoLower === "h"
+      ? `${rutaBase}Hombre.png`
+      : sexoLower === "mujer" || sexoLower === "m"
+      ? `${rutaBase}Mujer.png`
+      : `${rutaBase}default-avatar.png`;
+
+  if (userRoleSpan) {
+    userRoleSpan.textContent = localStorage.getItem("rol") || "Sin rol";
+  }
+
+  console.log(`Avatar asignado correctamente: ${avatar.src}`);
+}

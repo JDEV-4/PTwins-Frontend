@@ -1,4 +1,8 @@
+let currentPage = 1;
+const pageSize = 6;
+
 const btnAgregarUsuario = document.getElementById("btnAgregarUsuario");
+const btnToggleEstado = document.getElementById("btnToggleEstado");
 const modalUsuario = document.getElementById("modalUsuario");
 const cerrarModal = document.getElementById("cerrarModal");
 const formUsuario = document.getElementById("formUsuario");
@@ -6,9 +10,26 @@ const tituloModal = document.getElementById("tituloModal");
 const idUsuario = document.getElementById("idUsuario");
 const tbody = document.querySelector(".usuario-tabla tbody");
 
+const btnAnterior = document.getElementById("btnAnterior");
+const btnSiguiente = document.getElementById("btnSiguiente");
+const spanNumeroPagina = document.getElementById("pageNumber");
+
 const token = localStorage.getItem("token");
 
-// Mostrar modal para agregar
+let mostrarActivos = true;
+let totalPaginas = 1;
+
+// Evento botón toggle estado
+btnToggleEstado.addEventListener("click", () => {
+  mostrarActivos = !mostrarActivos;
+  currentPage = 1;
+  btnToggleEstado.textContent = mostrarActivos
+    ? "Mostrar Usuarios Inactivos"
+    : "Mostrar Usuarios Activos";
+  cargarUsuarios();
+});
+
+// Mostrar modal para agregar nuevo usuario
 btnAgregarUsuario.addEventListener("click", () => {
   tituloModal.textContent = "Agregar Usuario";
   idUsuario.value = "";
@@ -27,41 +48,77 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// Cargar usuarios
+// Botones de paginación
+btnAnterior.addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    cargarUsuarios();
+  }
+});
+
+btnSiguiente.addEventListener("click", () => {
+  if (currentPage < totalPaginas) {
+    currentPage++;
+    cargarUsuarios();
+  }
+});
+
 async function cargarUsuarios() {
   try {
-    const response = await fetch("https://localhost:7012/api/Usuario", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const estadoFiltro = mostrarActivos ? "Activo" : "Inactivo";
+
+    const response = await fetch(
+      `https://localhost:7012/api/Usuario/paginado?pageNumber=${currentPage}&pageSize=${pageSize}&estado=${estadoFiltro}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) throw new Error("Error al obtener usuarios");
 
-    const usuarios = await response.json();
+    const resultado = await response.json();
     tbody.innerHTML = "";
 
-    usuarios.forEach((u) => {
-      const tr = document.createElement("tr");
-
-      tr.innerHTML = `
-        <td>${u.usuario}</td>
-        <td>${u.rol}</td>
-        <td>${u.estado}</td>
-        <td>
-          <button class="btn-accion editar" data-id="${u.iD_Usuario}" 
-                  data-usuario="${u.usuario}" data-rol="${u.rol}" data-estado="${u.estado}">
-            <i class="fas fa-edit"></i> Editar
-          </button>
-          <button class="btn-accion eliminar" data-id="${u.iD_Usuario}">
-            <i class="fas fa-trash"></i> Eliminar
-          </button>
-        </td>
+    resultado.items.forEach((u) => {
+      let botonesHtml = `
+        <button class="btn-accion editar"
+                data-id="${u.iD_Usuario}"
+                data-usuario="${u.usuarioName}"
+                data-rol="${u.rol}"
+                data-estado="${u.estado}"
+                data-sexo="${u.sexo || ''}">
+          <i class="fas fa-edit"></i> Actualizar
+        </button>
       `;
 
+      if (mostrarActivos) {
+        botonesHtml += `
+          <button class="btn-accion desactivar" data-id="${u.iD_Usuario}">
+            <i class="fas fa-user-slash"></i> Desactivar
+          </button>
+        `;
+      } else {
+        botonesHtml += `
+          <button class="btn-accion activar" data-id="${u.iD_Usuario}">
+            <i class="fas fa-user-check"></i> Activar
+          </button>
+        `;
+      }
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${u.usuarioName}</td>
+        <td>${u.rol}</td>
+        <td>${u.estado}</td>
+        <td>${botonesHtml}</td>
+      `;
       tbody.appendChild(tr);
     });
 
+        totalPaginas = resultado.totalPages || 1;
+    actualizarNumeroPagina();
     agregarEventosBotones();
   } catch (error) {
     console.error("Error:", error);
@@ -69,7 +126,6 @@ async function cargarUsuarios() {
   }
 }
 
-// Guardar o actualizar usuario
 formUsuario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -78,6 +134,7 @@ formUsuario.addEventListener("submit", async (e) => {
     UsuarioClave: document.getElementById("clave").value,
     Rol: document.getElementById("rol").value,
     Estado: document.getElementById("estado").value,
+    Sexo: document.getElementById("sexo").value,
   };
 
   const id = idUsuario.value;
@@ -110,10 +167,10 @@ formUsuario.addEventListener("submit", async (e) => {
   }
 });
 
-// Asignar eventos a los botones de editar y eliminar
 function agregarEventosBotones() {
   const botonesEditar = document.querySelectorAll(".btn-accion.editar");
-  const botonesEliminar = document.querySelectorAll(".btn-accion.eliminar");
+  const botonesDesactivar = document.querySelectorAll(".btn-accion.desactivar");
+  const botonesActivar = document.querySelectorAll(".btn-accion.activar");
 
   botonesEditar.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -121,45 +178,88 @@ function agregarEventosBotones() {
       const usuario = btn.dataset.usuario;
       const rol = btn.dataset.rol;
       const estado = btn.dataset.estado;
+      const sexo = btn.dataset.sexo || "";
 
       idUsuario.value = id;
       document.getElementById("usuario").value = usuario;
-      document.getElementById("clave").value = ""; // No se puede recuperar
+      document.getElementById("clave").value = "";
       document.getElementById("rol").value = rol;
       document.getElementById("estado").value = estado;
+      document.getElementById("sexo").value = sexo;
 
-      tituloModal.textContent = "Editar Usuario";
+      tituloModal.textContent = "Actualizar Usuario";
       modalUsuario.style.display = "block";
     });
   });
 
-  botonesEliminar.forEach((btn) => {
+  botonesDesactivar.forEach((btn) => {
     btn.addEventListener("click", async () => {
       const id = btn.dataset.id;
-      if (!confirm("¿Estás seguro de eliminar este usuario?")) return;
+      if (!confirm("¿Deseas desactivar este usuario?")) return;
 
       try {
-        const response = await fetch(`https://localhost:7012/api/Usuario/${id}`, {
-
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `https://localhost:7012/api/Usuario/${id}/desactivar`,
+          {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           const errorText = await response.text();
           throw new Error(errorText);
         }
 
-        alert("Usuario eliminado correctamente");
+        alert("Usuario desactivado correctamente");
         cargarUsuarios();
       } catch (error) {
         console.error("Error:", error);
-        alert("Error al eliminar usuario: " + error.message);
+        alert("Error al desactivar usuario: " + error.message);
       }
     });
   });
+
+  botonesActivar.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const id = btn.dataset.id;
+      if (!confirm("¿Deseas activar este usuario?")) return;
+
+      try {
+        const response = await fetch(
+          `https://localhost:7012/api/Usuario/${id}/activar`,
+          {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(errorText);
+        }
+
+        alert("Usuario activado correctamente");
+        cargarUsuarios();
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Error al activar usuario: " + error.message);
+      }
+    });
+  });
+}
+
+function actualizarNumeroPagina() {
+  if (spanNumeroPagina) {
+    spanNumeroPagina.textContent = `Página ${currentPage} de ${totalPaginas}`;
+  }
+
+  btnAnterior.disabled = currentPage <= 1;
+  btnSiguiente.disabled = currentPage >= totalPaginas;
 }
 
 // Inicializar

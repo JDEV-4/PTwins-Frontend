@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clientes</title>
     <link rel="stylesheet" href="Clientes.css" />
+    <link rel="stylesheet" href="/Includes/header.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -12,49 +13,40 @@
   </head>
 
   <body>
-    <!-- Barra superior -->
-    <div class="header-bar">
-      <div class="header-content">
-        <span class="titulo-barra">Clientes</span>
-        <a href="/Home/Home.html" class="btn-salir">
-          <i class="fas fa-home"></i> Inicio
-        </a>
-      </div>
+    <!-- Header cargado desde Includes -->
+    <div id="header-container"></div>
+
+    <div class="boton-contenedor">
+      <button id="btnRegistrarCliente">
+        <i class="fas fa-user-plus"></i> Registrar Cliente
+      </button>
+      <button id="btnToggleEstado">Mostrar Clientes Inactivos</button>
     </div>
 
-    <div class="clientes-container">
-      <div class="boton-contenedor">
-        <button id="btnRegistrarCliente">
-          <i class="fas fa-user-plus"></i> Registrar Cliente
-        </button>
-      </div>
+    <!-- Tabla de productos -->
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Teléfono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="product-table-body">
+        <!-- Productos cargados dinámicamente -->
+      </tbody>
+    </table>
 
-      <!--Estructura del boton cantidad de registros-->
-      <div class="tabla-controles">
-        <label for="cantidadRegistros">
-          Mostrar
-          <select id="cantidadRegistros">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-          </select>
-          Registros
-        </label>
-      </div>
-
-      <table class="clientes-tabla">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Teléfono</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Se carga dinámicamente -->
-        </tbody>
-      </table>
+    <!-- Controles de paginación -->
+    <div id="paginationControls">
+      <button id="prevPage" onclick="goToPage(currentPage - 1)">
+        Anterior
+      </button>
+      <span id="pageNumber">Página 1</span>
+      <button id="nextPage" onclick="goToPage(currentPage + 1)">
+        Siguiente
+      </button>
     </div>
 
     <!-- Modal -->
@@ -63,7 +55,6 @@
         <span id="cerrarModal" class="close">&times;</span>
         <h2 id="tituloModal">Registrar Cliente</h2>
         <form id="formClientes">
-          <!-- CAMPO OCULTO PARA ID DEL CLIENTE -->
           <input type="hidden" id="idCliente" />
 
           <label>
@@ -84,6 +75,16 @@
       </div>
     </div>
 
+    <!-- Scripts -->
+    <script src="/Includes/header.js"></script>
+    <script>
+      // Cargar el header dinámicamente desde Includes
+      fetch("/Includes/header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        });
+    </script>
     <script src="Clientes.js"></script>
   </body>
 </html>

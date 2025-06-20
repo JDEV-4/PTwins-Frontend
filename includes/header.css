@@ -25,8 +25,6 @@ header {
   height: 100px;
   object-fit: contain;
 }
-
-/* Menú principal */
 nav ul.main-menu {
   list-style: none;
   display: flex;
@@ -40,6 +38,24 @@ nav ul.main-menu > li {
   font-weight: bold;
   color: white;
 }
+
+nav ul.main-menu > li > a.menu-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 10px 0;
+  display: inline-block;
+}
+
+nav ul.main-menu > li > a.menu-link {
+  display: flex;
+  align-items: center;
+  height: 18px; /* igual al header */
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
 
 /* Submenús */
 nav ul.submenu {
@@ -124,18 +140,6 @@ nav ul.submenu li a:hover {
   height: 18px;
   object-fit: contain;
 }
-
-
-footer {
-  text-align: center;
-  padding: 5px 0;
-  border-top: 1px solid #ddd;
-  font-family: 'Georgia', serif;
-  background-color: #fdfdfd;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 /* Hero */
 .hero {
   margin-top: 95px;
@@ -216,3 +220,12 @@ footer {
   background-color: #ff8c9c;
   transform: translateY(-2px);
 }
+
+.user-avatar {
+  width: 50px; /* Ajusta el tamaño según necesites */
+  height: 50px;
+  border-radius: 50%; /* Esto lo hace circular si la imagen lo permite */
+  object-fit: cover; /* Garantiza que la imagen se ajuste sin distorsionarse */
+  border: 2px solid #fff; /* Opcional, para darle un borde */
+}
+

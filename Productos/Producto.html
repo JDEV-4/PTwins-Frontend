@@ -38,14 +38,14 @@
         <h2>Listado de Productos</h2>
         <div style="display: flex; gap: 10px">
           <button id="showInactiveProducts" class="filter-button">
-            Inactivos
+            Mostrar Inactivos
           </button>
           <button
             id="addProductButton"
             class="filter-button"
             onclick="abrirModalAgregar()"
           >
-            Agregar
+            Agregar Producto
           </button>
         </div>
       </div>
@@ -77,7 +77,8 @@
         </button>
       </div>
     </div>
-    <!-- Modal para agregar producto -->
+
+    <!-- Modal para agregar producto (corregido) -->
     <div id="agregar-producto-modal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="cerrarModalAgregar()">&times;</span>
@@ -85,18 +86,26 @@
 
         <form id="formAgregarProducto">
           <label for="nombre">Nombre del Producto:</label>
-          <input type="text" id="nombre" required />
-
-          <label for="nombreCategoria">Categoría:</label>
-          <input type="text" id="nombreCategoria" required />
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            maxlength="40"
+          />
 
           <label for="descripcion">Descripción:</label>
-          <input type="text" id="descripcion" required />
+          <input
+            type="text"
+            id="descripcion"
+            name="descripcion"
+            required
+            maxlength="50"
+          />
 
-          <label for="estado">Estado:</label>
-          <select id="estado">
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
+          <label for="nombreCategoria">Categoría:</label>
+          <select id="nombreCategoria" name="nombreCategoria" required>
+            <option value="">Seleccione una categoría</option>
           </select>
 
           <button type="submit" class="btn-agregar">Agregar Producto</button>
@@ -112,16 +121,56 @@
         <table>
           <thead>
             <tr>
-              <th>Producto</th>
-              <th>Categoría</th>
-              <th>Existencia</th>
-              <th>Precio Venta</th>
+              <th style="display: none">ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="inactive-products-body">
             <!-- Productos inactivos cargados dinámicamente -->
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- Modal para actualizar producto -->
+    <div id="actualizar-producto-modal" class="modal">
+      <div class="modal-content">
+        <span id="cerrar-modal-actualizar" class="close">&times;</span>
+        <h3>Actualizar Producto</h3>
+        <form id="formActualizarProducto">
+          <input type="hidden" id="idActualizar" name="idActualizar" />
+
+          <label for="nombreActualizar">Nombre del Producto:</label>
+          <input
+            type="text"
+            id="nombreActualizar"
+            name="nombreActualizar"
+            required
+            maxlength="40"
+          />
+
+          <label for="descripcionActualizar">Descripción:</label>
+          <input
+            type="text"
+            id="descripcionActualizar"
+            name="descripcionActualizar"
+            required
+            maxlength="50"
+          />
+
+          <label for="categoriaActualizar">Categoría:</label>
+          <select id="categoriaActualizar" name="categoriaActualizar" required>
+            <option value="">Seleccione una categoría</option>
+            <!-- Opciones cargadas dinámicamente igual que en agregar -->
+          </select>
+
+          <button type="submit" class="btn-actualizar">
+            Actualizar Producto
+          </button>
+        </form>
       </div>
     </div>
 

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Ventas</title>
+    <link rel="stylesheet" href="Ventas.css" />
+    <link rel="stylesheet" href="/Includes/header.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <div class="container">
+      <h1>Registrar Venta</h1>
+      <label id="fecha-label" class="fecha-label"></label>
+
+      <!-- Sección agregar productos -->
+      <div class="form-grid" style="position: relative">
+        <div class="form-group" style="position: relative">
+          <label for="cliente">Cliente:</label>
+          <input
+            type="text"
+            id="cliente"
+            placeholder="Nombre del cliente"
+            autocomplete="off"
+          />
+          <input type="hidden" id="clienteId" />
+          <!-- Contenedor para autocompletado cliente -->
+          <div id="listaClientes" class="lista-clientes"></div>
+        </div>
+        <div class="form-group" style="position: relative">
+          <label for="producto">Producto:</label>
+          <input
+            type="text"
+            id="producto"
+            placeholder="Nombre del producto"
+            autocomplete="off"
+          />
+          <!-- Contenedor para autocompletado producto -->
+          <div id="listaProductos" class="lista-productos"></div>
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio Unitario:</label>
+          <input type="number" id="precio" min="0" step="0.01" readonly />
+        </div>
+        <div
+          class="form-group"
+          style="display: flex; flex-direction: column; gap: 4px"
+        >
+          <label for="cantidad" style="margin-bottom: 0">Cantidad:</label>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              gap: 12px;
+            "
+          >
+            <input
+              type="number"
+              id="cantidad"
+              min="1"
+              value="1"
+              style="width: 90px; margin: 0"
+            />
+            <button
+              id="btnAgregar"
+              style="cursor: pointer; padding: 6px 12px; font-size: 1rem"
+            >
+              Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla -->
+      <table id="tablaVenta">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- Sección de Totales Mejorada -->
+      <div class="totales-container">
+        <div class="totales-box">
+          <p>Subtotal: <span id="subtotal">C$ 0.00</span></p>
+          <p>IVA (15%): <span id="iva">C$ 0.00</span></p>
+          <p class="total-final">Total: <span id="total">C$ 0.00</span></p>
+        </div>
+      </div>
+
+      <!-- Botón para Registrar Venta alineado a la derecha -->
+      <div class="button-group">
+        <button id="btnRegistrarVenta">Registrar Venta</button>
+      </div>
+      <!-- Modal para confirmar factura o solo venta -->
+      <div id="modalConfirmar" class="modal">
+        <div class="modal-content">
+          <span class="close-button" id="cerrarModal">&times;</span>
+          <h2>¿Desea generar la factura o solo crear la venta?</h2>
+          <div class="modal-buttons">
+            <button id="btnFactura">Generar Factura</button>
+            <button id="btnSoloVenta">Solo Crear Venta</button>
+          </div>
+        </div>
+      </div>
+      <div id="modalMensaje" class="modal-mensaje" style="display: none">
+        <div class="modal-content-mensaje">
+          <span id="cerrarMensaje" class="cerrar">&times;</span>
+          <p id="textoMensaje"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="/Includes/header.js"></script>
+    <script>
+      fetch("/Includes/header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        });
+
+      // Poner fecha en formato día de mes de año
+      const fechaActual = new Date().toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+      document.getElementById(
+        "fecha-label"
+      ).textContent = `Fecha: ${fechaActual}`;
+    </script>
+    <script src="Ventas.js"></script>
+  </body>
+</html>
